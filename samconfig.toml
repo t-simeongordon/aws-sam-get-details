@@ -1,0 +1,12 @@
+version = 0.1
+[default]
+[default.deploy]
+[default.deploy.parameters]
+stack_name = "sam-retrieve-names"
+s3_bucket = "aws-sam-cli-managed-default-samclisourcebucket-1df1hjf2lfia3"
+s3_prefix = "sam-retrieve-names"
+region = "eu-west-2"
+confirm_changeset = true
+capabilities = "CAPABILITY_IAM"
+disable_rollback = true
+image_repositories = []
