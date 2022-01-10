@@ -15,10 +15,16 @@ Resources:
     Type: AWS::Serverless::Function # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlessfunction
     Properties:
       CodeUri: search/
+      Policies:
+        - AmazonSSMFullAccess
       Handler: src/index.handler
       Runtime: nodejs14.x
       Architectures:
         - x86_64
+      Environment:
+        Variables:
+          SSM_NAMES: /Project/Service/Names
+          SSM_ENDPOINT: https://ssm.eu-west-2.amazonaws.com
       Events:
         Search:
           Type: Api # More info about API Event Source: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#api
