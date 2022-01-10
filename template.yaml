@@ -31,6 +31,13 @@ Resources:
           Properties:
             Path: /samrecievenames
             Method: get
+  SimpleParameter:
+    Type: AWS::SSM::Parameter
+    Properties:
+      Name: '/Project/Service/Names'
+      Description: 'Sample dev config values for my app'
+      Type: String
+      Value: 'name1, name2'
 
 Outputs:
   # ServerlessRestApi is an implicit API created out of Events key under Serverless::Function

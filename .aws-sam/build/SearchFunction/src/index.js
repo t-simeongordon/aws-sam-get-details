@@ -19,6 +19,7 @@ exports.handler = async (event) => {
 //           console.log(`Error while retrieving parameter info for Parameter Name = /test/store/names  and reason: ${err}`);
 //         });
 
+
     try{
         console.log(`event: ${JSON.stringify(event)}`)
         const result = await new AWS.SSM(options).getParameter({Name}).promise();
@@ -28,6 +29,7 @@ exports.handler = async (event) => {
         console.error(`Main function caught error: ${error} for contextUid: ${contextUid}`);
         response = formatter.formatError(502, { error })
     }
+    
     console.log(`response: ${JSON.stringify(response)}`)
 
     return response;

@@ -51,14 +51,8 @@ jest.mock('aws-sdk', () => {
         "headers": {
             "Content-Type": "application/json"
         },
-        "isBase64Encode": false,
-        "body": {
-            "statusCode": 200,
-            "dataSourceUrls": [
-                "name1",
-                "name2"
-            ]
-        }
+        "isBase64Encoded": false,
+        "body": "{\"statusCode\":200,\"dataSourceUrls\":[\"name1\",\"name2\"]}"
     });
       expect(ssm.getParameter).toBeCalledWith({ Name: `/Project/Service/Names` });
     //   expect(ssm.getParameter().promise).toBeCalledTimes(1);
@@ -76,9 +70,7 @@ jest.mock('aws-sdk', () => {
               'x-amzn-ErrorType': 502
           },
           "isBase64Encoded": false,
-          "body": {
-            "error": "No parameter configured"
-          }
+          "body": "{\"error\":\"No parameter configured\"}"
       });
         expect(ssm.getParameter).toBeCalledWith({ Name: `/Project/Service/Names` });
       //   expect(ssm.getParameter().promise).toBeCalledTimes(1);
