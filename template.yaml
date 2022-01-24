@@ -16,7 +16,18 @@ Resources:
     Properties:
       CodeUri: search/
       Policies:
-        - AmazonSSMFullAccess
+      - Statement:
+        - Sid: SSMDescribeParametersPolicy
+          Effect: Allow
+          Action:
+          - ssm:DescribeParameters
+          Resource: '*'
+        - Sid: SSMGetParameterPolicy
+          Effect: Allow
+          Action:
+          - ssm:GetParameters
+          - ssm:GetParameter
+          Resource: '*'      
       Handler: src/index.handler
       Runtime: nodejs14.x
       Architectures:
@@ -36,7 +47,7 @@ Resources:
     Properties:
       Name: '/Project/Service/Names'
       Description: 'Sample dev config values for my app'
-      Type: String
+      Type: StringList
       Value: 'name1, name2'
 
 Outputs:
